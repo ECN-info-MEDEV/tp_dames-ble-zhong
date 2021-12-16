@@ -12,4 +12,5 @@ package edu.centralenantes.dame;
 public class Plateau {
    private int[][] grille;
    
+   
 }

@@ -9,18 +9,6 @@ package edu.centralenantes.dame;
  *
  * @author uble
  */
-public class Pion {
-   boolean dame;
-
-   public boolean isDame() {
-      return dame;
-   }
-
-   public void setDame(boolean dame) {
-      this.dame = dame;
-   }
+public class Pion extends Element{
    
-   public void makeDame(){
-      this.dame=true;
-   }
 }
