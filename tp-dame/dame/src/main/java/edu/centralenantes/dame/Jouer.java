@@ -84,11 +84,11 @@ public class Jouer {
     public boolean Changement(Plateau p,int x, int y){
        boolean etat =false;
        if(!(p.getGrille()[x][y].isDame())){
-          if (p.getGrille()[x][y].isEquipe() && y==9){
+          if (p.getGrille()[x][y].isEquipe() && x==9){
              p.getGrille()[x][y].setDame(true);
              etat =true;
           }
-          else if(!(p.getGrille()[x][y].isEquipe()) && y==0){
+          else if(!(p.getGrille()[x][y].isEquipe()) && x==0){
              p.getGrille()[x][y].setDame(true);
              etat=true;
           }
