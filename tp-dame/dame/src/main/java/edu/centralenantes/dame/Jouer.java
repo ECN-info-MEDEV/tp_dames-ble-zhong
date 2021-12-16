@@ -74,14 +74,14 @@ public class Jouer {
             
             if (answer.equals("d")){
                 if (pla.getGrille()[x][y].isDame()){
-                    reussi = pla.deplacerDame(x,y,x1,y1);
+                    reussi = pla.deplacer(x,y,x1,y1);
                 }
                 else{
-                    reussi = pla.deplacerPion(x,y,x1,y1);
+                    reussi = pla.deplacer(x,y,x1,y1);
                 }                
             }
             else{
-                reussi = pla.prendrePion(x,y,x1,y1);
+                reussi = pla.prendreDame(x,y,x1,y1);
                 System.out.println("Reprendre un autre pion? y/n");
                 do {
                     answer = keyboard.nextLine();
