@@ -9,7 +9,7 @@ package edu.centralenantes.dame;
  *
  * @author uble
  */
-public abstract class Element {
+public class Element {
    boolean equipe;
    boolean Dame;
 
