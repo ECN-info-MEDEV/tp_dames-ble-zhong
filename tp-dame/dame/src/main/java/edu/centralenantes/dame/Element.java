@@ -11,7 +11,13 @@ package edu.centralenantes.dame;
  */
 public abstract class Element {
    boolean equipe;
+   boolean Dame;
 
+    public Element(boolean equipe, boolean Dame) {
+        this.equipe = equipe;
+        this.Dame = Dame;
+    }
+   
    public boolean isEquipe() {
       return equipe;
    }
@@ -19,5 +25,17 @@ public abstract class Element {
    public void setEquipe(boolean equipe) {
       this.equipe = equipe;
    }
+
+    public boolean isDame() {
+        return Dame;
+    }
+
+    public void setDame(boolean Dame) {
+        this.Dame = Dame;
+    }
+   
+   
+   
+   
    
 }
