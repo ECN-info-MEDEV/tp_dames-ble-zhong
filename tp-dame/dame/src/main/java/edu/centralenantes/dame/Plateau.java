@@ -61,4 +61,16 @@ public class Plateau {
         }
 
    }
+
+    public Element[][] getGrille() {
+        return grille;
+    }
+
+    public void setGrille(Element[][] grille) {
+        this.grille = grille;
+    }
+   
+   
+   
+   
 }

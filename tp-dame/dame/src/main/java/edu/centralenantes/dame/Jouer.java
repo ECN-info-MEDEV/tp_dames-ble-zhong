@@ -35,7 +35,7 @@ public class Jouer {
     public static void tourDeJeu(Plateau pla){
         Scanner keyboard = new Scanner(System.in);
         String answer;
-        System.out.println("Tour du Joueur 1");
+        System.out.println("Tour du Joueur 1. Equipe noirs");
         
         System.out.println("Souhaitez-vous déplacer ou prendre un pion? d/p");
         do {
@@ -54,19 +54,31 @@ public class Jouer {
                 System.out.println("y ?");
                 y= keyboard.nextInt();
                 
-                if (x<10 && x>=0 && y<10 && y>=0){
+                if (x<10 && x>=0 && y<10 && y>=0 && (pla.getGrille()[x][y].isEquipe())){  // equipe==true --> équipe des noirs
                     break;  // sort de la boucle si les valeurs sont bonnes
                 }
-                
-                
             }
             
-            ;
+            System.out.println("Coordonnées cible? ");
+            int x1;
+            int y1;
+            
+            while (true){
+                System.out.println("x1 ?");
+                x1 = keyboard.nextInt();
+                
+                System.out.println("y1 ?");
+                y1= keyboard.nextInt();
+                
+                if (x<10 && x>=0 && y<10 && y>=0 && (pla.getGrille()[x][y].isEquipe()) && x1!=x && y1!=y){  // equipe==true --> équipe des noirs
+                    break;  // sort de la boucle si les valeurs sont bonnes
+                }
+            }
+            
+            
             
             
         }
-        
-        
     }
     
     public boolean Changement(Plateau p,int x, int y){
@@ -83,5 +95,5 @@ public class Jouer {
        }
        return(etat);
     }
-    
+   
 }
