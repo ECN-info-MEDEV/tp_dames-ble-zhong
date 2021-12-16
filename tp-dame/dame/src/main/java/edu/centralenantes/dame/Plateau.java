@@ -33,4 +33,16 @@ public class Plateau {
    public void afficher(){
       System.out.println("Etate actuel  du plateau");
    }
+
+    public Element[][] getGrille() {
+        return grille;
+    }
+
+    public void setGrille(Element[][] grille) {
+        this.grille = grille;
+    }
+   
+   
+   
+   
 }
