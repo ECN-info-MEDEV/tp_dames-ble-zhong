@@ -79,9 +79,15 @@ public class Plateau {
       if (isDame == true) {
          // faire déplacer un DAME si possible
          if (verifierDeplacerDame(x, y, x1, y1) == true) {
+            if ((Math.abs(x1 - x) == Math.abs(y1 - y) && Math.abs(x1 - x) == 2) && (grille[x + (x1 - x) / 2][y
+                  + (y1 - y) / 2] != null)) {
+               // déplacement en prenant un pion
+               prendrePion(x, y, x1, y1);
+            }
             grille[x1][y1] = grille[x][y];
             grille[x][y] = null;
             System.out.println("Déplacement réussi.");
+
             res = true;
          } else if (verifierDeplacerDame(x, y, x1, y1) == false) {
             System.out.println("On ne peut pas déplacer vers cette cellule selon les règles. Ré-essayez svp.");
@@ -91,6 +97,10 @@ public class Plateau {
       } else {
          // faire déplacer un PION si possible
          if (verifierDeplacerPion(x, y, x1, y1) == true) {
+            if ((Math.abs(x1 - x) == Math.abs(y1 - y)) && (casDeplaceDame(x, y, x1, y1) == 2)) {
+               // déplacement en prenant un pion
+               prendrePion(x, y, x1, y1);
+            }
             grille[x1][y1] = grille[x][y];
             grille[x][y] = null;
             System.out.println("Déplacement réussi.");
@@ -199,5 +209,26 @@ public class Plateau {
          res = 0;
       }
       return res;
+   }
+
+   public void prendrePion(int x, int y, int x1, int y1) {
+
+      /**
+       * x : x initial
+       * y : y initial
+       * x1 : x destinataire
+       * y1: y destinataire
+       */
+
+      // quand on appelle cet méthode, il faut s'assurer que le déplacement soit légal
+      // autrement dit, on assume dans cette méthode que il existe un et seulement un
+      // pion entre (x,y) et (x1,y1)
+
+      // pour assurer ça, il faut toujours appeler cette méthode dans deplacer()
+      for (int i = 1; i < (x1 - x - 1); i++) {
+         if (grille[x + i][y + i] != null) {
+            grille[x + i][y + i] = null;
+         }
+      }
    }
 }
