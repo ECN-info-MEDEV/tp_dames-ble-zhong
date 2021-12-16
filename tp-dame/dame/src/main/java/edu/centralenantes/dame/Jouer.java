@@ -20,12 +20,8 @@ public class Jouer {
         System.out.println("Bienvenue au jeu de dames. Plateau crééé");
         
         while (true){
-            tourDeJeu(plat);
-            
-            
+            tourDeJeu(plat);   
         }
-        
-        
     }
     
     /**
@@ -36,48 +32,68 @@ public class Jouer {
         Scanner keyboard = new Scanner(System.in);
         String answer;
         System.out.println("Tour du Joueur 1. Equipe noirs");
-        
         System.out.println("Souhaitez-vous déplacer ou prendre un pion? d/p");
         do {
             answer = keyboard.nextLine();
         } while (!answer.equals("d") && !answer.equals("p"));
         
-        if ("d".equals(answer)){
+        while (true){
             System.out.println("Coordonnées du pion à déplacer? ");
             int x;
             int y;
-            
+
             while (true){
                 System.out.println("x ?");
                 x = keyboard.nextInt();
-                
+
                 System.out.println("y ?");
                 y= keyboard.nextInt();
-                
+
                 if (x<10 && x>=0 && y<10 && y>=0 && (pla.getGrille()[x][y].isEquipe())){  // equipe==true --> équipe des noirs
                     break;  // sort de la boucle si les valeurs sont bonnes
                 }
             }
-            
+
             System.out.println("Coordonnées cible? ");
             int x1;
             int y1;
-            
+
             while (true){
                 System.out.println("x1 ?");
                 x1 = keyboard.nextInt();
-                
+
                 System.out.println("y1 ?");
                 y1= keyboard.nextInt();
-                
+
                 if (x<10 && x>=0 && y<10 && y>=0 && (pla.getGrille()[x][y].isEquipe()) && x1!=x && y1!=y){  // equipe==true --> équipe des noirs
                     break;  // sort de la boucle si les valeurs sont bonnes
                 }
             }
+
+            boolean reussi;
             
-            
-            
-            
+            if (answer.equals("d")){
+                if (pla.getGrille()[x][y].isDame()){
+                    reussi = pla.deplacerDame(x,y,x1,y1);
+                }
+                else{
+                    reussi = pla.deplacerPion(x,y,x1,y1);
+                }                
+            }
+            else{
+                reussi = pla.prendrePion(x,y,x1,y1);
+                System.out.println("Reprendre un autre pion? y/n");
+                do {
+                    answer = keyboard.nextLine();
+                } while (!answer.equals("y") && !answer.equals("n"));
+                
+                if (answer.equals("y")){
+                    reussi=false;
+                }
+            }
+            if (reussi){  // sort de la boucle si on ne veut plus prendre de pion ou si on voulait juste se déplacer
+                break;
+            }
         }
     }
     
