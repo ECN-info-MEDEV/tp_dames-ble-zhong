@@ -12,18 +12,18 @@ import java.util.Scanner;
  * @author uble
  */
 public class Jouer {
-   
+
     public static void main(String[] args) {
-        
+
         Plateau plat = new Plateau();
-        
+
         System.out.println("Bienvenue au jeu de dames. Plateau crééé");
-        
+
         while (true){
-            tourDeJeu(plat, true);   
+            tourDeJeu(plat, true);
             tourDeJeu(plat, false);        }
     }
-    
+
     /**
      *
      * @param pla plateau de jeu
@@ -37,7 +37,7 @@ public class Jouer {
         do {
             answer = keyboard.nextLine();
         } while (!answer.equals("d") && !answer.equals("p"));
-        
+
         while (true){
             System.out.println("Coordonnées du pion à déplacer? ");
             int x;
@@ -72,17 +72,17 @@ public class Jouer {
             }
 
             boolean reussi;
-            
+
             if (answer.equals("d")){
-                reussi = pla.deplacer(x,y,x1,y1);              
+                reussi = pla.deplacer(x,y,x1,y1);
             }
             else{
-                reussi = pla.prendrePion(x,y,x1,y1);
+                reussi = pla.prendreDame(x,y,x1,y1);
                 System.out.println("Reprendre un autre pion? y/n");
                 do {
                     answer = keyboard.nextLine();
                 } while (!answer.equals("y") && !answer.equals("n"));
-                
+
                 if (answer.equals("y")){
                     reussi=false;
                 }
@@ -92,20 +92,20 @@ public class Jouer {
             }
         }
     }
-    
+
     public boolean Changement(Plateau p,int x, int y){
        boolean etat =false;
        if(!(p.getGrille()[x][y].isDame())){
-          if (p.getGrille()[x][y].isEquipe() && y==9){
+          if (p.getGrille()[x][y].isEquipe() && x==9){
              p.getGrille()[x][y].setDame(true);
              etat =true;
           }
-          else if(!(p.getGrille()[x][y].isEquipe()) && y==0){
+          else if(!(p.getGrille()[x][y].isEquipe()) && x==0){
              p.getGrille()[x][y].setDame(true);
              etat=true;
           }
        }
        return(etat);
     }
-   
+
 }
