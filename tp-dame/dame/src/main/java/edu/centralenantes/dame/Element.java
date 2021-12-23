@@ -11,11 +11,16 @@ package edu.centralenantes.dame;
  */
 public class Element {
    boolean equipe;
-   boolean Dame;
+   boolean dame;
 
-    public Element(boolean equipe, boolean Dame) {
+    public Element() {
+        this.equipe=false;
+        this.dame=false;
+    }
+    
+    public Element(boolean equipe, boolean dame) {
         this.equipe = equipe;
-        this.Dame = Dame;
+        this.dame = dame;
     }
    
    public boolean isEquipe() {
@@ -27,11 +32,11 @@ public class Element {
    }
 
     public boolean isDame() {
-        return Dame;
+        return dame;
     }
 
-    public void setDame(boolean Dame) {
-        this.Dame = Dame;
+    public void setDame(boolean dame) {
+        this.dame = dame;
     }
    
    
