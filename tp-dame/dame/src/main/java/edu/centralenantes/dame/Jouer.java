@@ -20,18 +20,19 @@ public class Jouer {
         System.out.println("Bienvenue au jeu de dames. Plateau crééé");
         
         while (true){
-            tourDeJeu(plat);   
-        }
+            tourDeJeu(plat, true);   
+            tourDeJeu(plat, false);        }
     }
     
     /**
      *
      * @param pla plateau de jeu
+     * @param joueur
      */
-    public static void tourDeJeu(Plateau pla){
+    public static void tourDeJeu(Plateau pla, bool joueur){
         Scanner keyboard = new Scanner(System.in);
         String answer;
-        System.out.println("Tour du Joueur 1. Equipe noirs");
+        System.out.println("Tour du Joueur "+joueur+". Equipe noirs");
         System.out.println("Souhaitez-vous déplacer ou prendre un pion? d/p");
         do {
             answer = keyboard.nextLine();
@@ -49,7 +50,7 @@ public class Jouer {
                 System.out.println("y ?");
                 y= keyboard.nextInt();
 
-                if (x<10 && x>=0 && y<10 && y>=0 && (pla.getGrille()[x][y].isEquipe())){  // equipe==true --> équipe des noirs
+                if (x<10 && x>=0 && y<10 && y>=0 && (pla.getGrille()[x][y].isEquipe()==joueur)){  // equipe==true --> équipe des noirs
                     break;  // sort de la boucle si les valeurs sont bonnes
                 }
             }
@@ -65,7 +66,7 @@ public class Jouer {
                 System.out.println("y1 ?");
                 y1= keyboard.nextInt();
 
-                if (x<10 && x>=0 && y<10 && y>=0 && (pla.getGrille()[x][y].isEquipe()) && x1!=x && y1!=y){  // equipe==true --> équipe des noirs
+                if (x<10 && x>=0 && y<10 && y>=0 && (pla.getGrille()[x][y].isEquipe()==joueur) && x1!=x && y1!=y){  // equipe==true --> équipe des noirs
                     break;  // sort de la boucle si les valeurs sont bonnes
                 }
             }
@@ -73,12 +74,7 @@ public class Jouer {
             boolean reussi;
             
             if (answer.equals("d")){
-                if (pla.getGrille()[x][y].isDame()){
-                    reussi = pla.deplacerDame(x,y,x1,y1);
-                }
-                else{
-                    reussi = pla.deplacerPion(x,y,x1,y1);
-                }                
+                reussi = pla.deplacer(x,y,x1,y1);              
             }
             else{
                 reussi = pla.prendrePion(x,y,x1,y1);
