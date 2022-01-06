@@ -91,9 +91,10 @@ public class Jouer {
             if (!priseObligee) {
                 reussi = pla.deplacer(x, y, x1, y1, joueur);
             } else {
+                String strOutput = "Prise impossible";
                 if (pla.getGrille()[x][y].isDame()) {
                     if (pla.casDeplaceDame(x, y, x1, y1, joueur) != 2) {
-                        System.out.println("Prise impossible");
+                        System.out.println(strOutput);
                     } else {
                         reussi = pla.deplacer(x, y, x1, y1, joueur);
                     }
@@ -103,10 +104,10 @@ public class Jouer {
                         if (pla.getGrille()[(x1 + x) / 2][(y1 + y) / 2].equipe != joueur) {
                             reussi = pla.deplacer(x, y, x1, y1, joueur);
                         } else {
-                            System.out.println("Prise impossible");
+                            System.out.println(strOutput);
                         }
                     } else {
-                        System.out.println("Prise impossible");
+                        System.out.println(strOutput);
                     }
                 }
             }

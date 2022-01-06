@@ -47,25 +47,8 @@ public class Plateau {
             grid[i][1] = "   ";
         }
 
-        for (int i = 2; i < grille.length + 2; i++) {
-            for (int j = 2; j < grille[0].length + 2; j++) {
-                if (grille[i - 2][j - 2] != null && grille[i - 2][j - 2].isEquipe() && grille[i - 2][j - 2].isDame()) {
-                    grid[i][j] = " N ";
-                } else if (grille[i - 2][j - 2] != null && grille[i - 2][j - 2].isEquipe()
-                        && !(grille[i - 2][j - 2].isDame())) {
-                    grid[i][j] = " n ";
-                } else if (grille[i - 2][j - 2] != null && !(grille[i - 2][j - 2].isEquipe())
-                        && !(grille[i - 2][j - 2].isDame())) {
-                    grid[i][j] = " b ";
-                } else if (grille[i - 2][j - 2] != null && !(grille[i - 2][j - 2].isEquipe())
-                        && (grille[i - 2][j - 2].isDame())) {
-                    grid[i][j] = " B ";
-                } else {
-                    grid[i][j] = " - ";
-                }
+        renderSymbols(grid);
 
-            }
-        }
         for (String[] grid1 : grid) {
             for (String st : grid1) {
                 System.out.print(st);
@@ -109,7 +92,7 @@ public class Plateau {
                 grille[x][y] = null;
                 System.out.println("Déplacement réussi.");
 
-                res = true;
+                // default valeur de res est déjà true;
             } else {
                 System.out.println("On ne peut pas déplacer vers cette cellule selon les règles. Ré-essayez svp.");
                 res = false;
@@ -117,20 +100,21 @@ public class Plateau {
             return new boolean[] { res, pris };
         } else {
             // faire déplacer un PION si possible
-            if (verifierDeplacerPion(x, y, x1, y1, joueur)) {
-                if ((Math.abs(x1 - x) == Math.abs(y1 - y) && Math.abs(x1 - x) == 2)
-                        && (grille[(x1 + x) / 2][(y1 + y) / 2] != null)) {
-                    if (grille[(x1 + x) / 2][(y1 + y) / 2].equipe != joueur) {
-                        // déplacement en prenant un pion si le pion à prendre est d'une autre équipe
-                        prendrePion(x, y, x1, y1);
-                        pris = true;
-                        System.out.println("un pion a été pris");
-                    }
-                }
+            if ((verifierDeplacerPion(x, y, x1, y1, joueur))
+                    && (Math.abs(x1 - x) == Math.abs(y1 - y))
+                    && (Math.abs(x1 - x) == 2)
+                    && (grille[(x1 + x) / 2][(y1 + y) / 2] != null)
+                    && (grille[(x1 + x) / 2][(y1 + y) / 2].equipe != joueur)) {
+
+                // déplacement en prenant un pion si le pion à prendre est d'une autre équipe
+                prendrePion(x, y, x1, y1);
+                pris = true;
+                System.out.println("un pion a été pris");
+
                 grille[x1][y1] = grille[x][y];
                 grille[x][y] = null;
                 System.out.println("Déplacement réussi.");
-                res = true;
+                // default valeur de res est déjà true;
             } else if (!verifierDeplacerPion(x, y, x1, y1, joueur)) {
                 System.out.println("On ne peut pas déplacer vers cette cellule selon les règles. Ré-essayez svp.");
                 res = false;
@@ -223,12 +207,17 @@ public class Plateau {
             }
         }
         switch (count) {
-            case 0 -> res = 1;
-            case 1 -> res = 2;
-            default -> {
+            case 0:
+                res = 1;
+                break;
+            case 1:
+                res = 2;
+                break;
+            default:
                 System.out.println("Cas de déplacement d'un dame inattendu.");
                 res = 0;
-            }
+                break;
+
         }
         return res;
     }
@@ -256,16 +245,37 @@ public class Plateau {
             }
         }
     }
-    
-    public boolean partieFinie(boolean joueur){
+
+    public void renderSymbols(String[][] grid) {
+        for (int i = 2; i < grille.length + 2; i++) {
+            for (int j = 2; j < grille[0].length + 2; j++) {
+                if (grille[i - 2][j - 2] != null && grille[i - 2][j - 2].isEquipe() && grille[i - 2][j - 2].isDame()) {
+                    grid[i][j] = " N ";
+                } else if (grille[i - 2][j - 2] != null && grille[i - 2][j - 2].isEquipe()
+                        && !(grille[i - 2][j - 2].isDame())) {
+                    grid[i][j] = " n ";
+                } else if (grille[i - 2][j - 2] != null && !(grille[i - 2][j - 2].isEquipe())
+                        && !(grille[i - 2][j - 2].isDame())) {
+                    grid[i][j] = " b ";
+                } else if (grille[i - 2][j - 2] != null && !(grille[i - 2][j - 2].isEquipe())
+                        && (grille[i - 2][j - 2].isDame())) {
+                    grid[i][j] = " B ";
+                } else {
+                    grid[i][j] = " - ";
+                }
+
+            }
+        }
+    }
+
+    public boolean partieFinie(boolean joueur) {
         boolean finie = true;
-        outerloop:
-        for (int i = 0; i<10; i++){
-            for (int j = 0; j<10; j++){
-                if (this.grille[i][j] != null){
-                    if (this.grille[i][j].equipe == joueur){
+        outerloop: for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                if (this.grille[i][j] != null) {
+                    if (this.grille[i][j].equipe == joueur) {
                         finie = false;
-                        break outerloop;  // sort des deux boucles puisqu'on a trouvé au moins un pion
+                        break outerloop; // sort des deux boucles puisqu'on a trouvé au moins un pion
                     }
                 }
             }
