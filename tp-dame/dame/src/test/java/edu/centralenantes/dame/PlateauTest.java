@@ -81,6 +81,11 @@ public class PlateauTest {
 
       assertEquals(expResult[0], result[0]);
       assertEquals(expResult[1], result[1]);
+      instance.getGrille()[2][3].setDame(true);
+      boolean[] result2 = instance.deplacer(2,3,0,5,true);
+      boolean[] expResult2 = new boolean[] { true, false };
+      assertEquals(expResult2[0], result2[0]);
+      assertEquals(expResult2[1], result2[1]);
    }
 
    /**
