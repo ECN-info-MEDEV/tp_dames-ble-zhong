@@ -20,8 +20,8 @@ public class Jouer {
         System.out.println("Bienvenue au jeu de dames. Plateau crééé");
 
         while (true) {
-            tourDeJeu(plat, true);
-            tourDeJeu(plat, false);
+            tourDeJeu(plat, true);  // équipe des blancs
+            tourDeJeu(plat, false);  // équipe des noirs
         }
     }
 
