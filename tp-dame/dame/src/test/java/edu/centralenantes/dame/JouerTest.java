@@ -28,7 +28,7 @@ public class JouerTest {
       String[] args = null;
       Jouer.main(args);
       // TODO review the generated test code and remove the default call to fail.
-      fail("The test case is a prototype.");
+      // fail("The test case is a prototype.");
    }
 
    /**
@@ -43,7 +43,7 @@ public class JouerTest {
       Jouer.tourDeJeu(pla, true);
       Jouer.tourDeJeu(pla, false);
       // TODO review the generated test code and remove the default call to fail.
-      fail("The test case is a prototype.");
+      // fail("The test case is a prototype.");
    }
 
    /**
