@@ -81,9 +81,11 @@ public class PlateauTest {
       int x1 = 1;
       int y1 = 4;
       Plateau instance = new Plateau();
-      boolean[] expResult = new boolean[]{true, false};
       boolean[] result = instance.deplacer(x, y, x1, y1, true);
-      assertEquals(expResult, result);
+      boolean[] expResult = new boolean[]{true, false};
+      
+      assertEquals(expResult[0], result[0]);
+      assertEquals(expResult[1], result[1]);
       // TODO review the generated test code and remove the default call to fail.
       // fail("The test case is a prototype.");
    }
