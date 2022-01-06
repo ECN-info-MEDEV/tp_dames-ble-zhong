@@ -16,6 +16,14 @@ import org.junit.Ignore;
  * @author uble
  */
 public class JouerTest {
+
+   @BeforeClass
+   public static void setUpClass() throws Exception {
+   }
+
+   @AfterClass
+   public static void tearDownClass() throws Exception {
+   }
    
    
    /**
@@ -38,7 +46,7 @@ public class JouerTest {
    @Test
    public void testTourDeJeu() {
       System.out.println("tourDeJeu");
-      Plateau pla = null;
+      Plateau pla = new Plateau();
       
       Jouer.tourDeJeu(pla, true);
       Jouer.tourDeJeu(pla, false);

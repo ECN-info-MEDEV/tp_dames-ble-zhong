@@ -31,6 +31,7 @@ public class PlateauTest {
    /**
     * Test of afficher method, of class Plateau.
     */
+   
    @Test
    public void testAfficher() {
       System.out.println("afficher");
