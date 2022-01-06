@@ -29,7 +29,7 @@ public class JouerTest {
    /**
     * Test of main method, of class Jouer.
     */
-   @Ignore("pas encore implémenté")
+   @Ignore
    @Test
    public void testMain() {
       System.out.println("main");
@@ -42,7 +42,7 @@ public class JouerTest {
    /**
     * Test of tourDeJeu method, of class Jouer.
     */
-   @Ignore("pas encore implémenté")
+   @Ignore
    @Test
    public void testTourDeJeu() {
       System.out.println("tourDeJeu");

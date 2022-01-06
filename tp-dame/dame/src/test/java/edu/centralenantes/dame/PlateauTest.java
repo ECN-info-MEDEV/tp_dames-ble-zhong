@@ -32,8 +32,6 @@ public class PlateauTest {
     * Test of afficher method, of class Plateau.
     */
 
-   @Ignore
-
    @Test
    public void testAfficher() {
       System.out.println("afficher");
@@ -46,8 +44,6 @@ public class PlateauTest {
    /**
     * Test of getGrille method, of class Plateau.
     */
-   @Ignore("bug")
-
    @Test
    public void testGetGrille() {
       System.out.println("getGrille");
@@ -62,8 +58,6 @@ public class PlateauTest {
    /**
     * Test of setGrille method, of class Plateau.
     */
-   @Ignore("bug")
-
    @Test
    public void testSetGrille() {
       System.out.println("setGrille");
@@ -97,7 +91,6 @@ public class PlateauTest {
    /**
     * Test of verifierDeplacerPion method, of class Plateau.
     */
-   @Ignore("bug")
    @Test
    public void testVerifierDeplacerPion() {
       System.out.println("verifierDeplacerPion");
@@ -116,7 +109,6 @@ public class PlateauTest {
    /**
     * Test of verifierDeplacerDame method, of class Plateau.
     */
-   @Ignore("bug")
    @Test
    public void testVerifierDeplacerDame() {
       System.out.println("verifierDeplacerDame");
@@ -135,7 +127,6 @@ public class PlateauTest {
    /**
     * Test of casDeplaceDame method, of class Plateau.
     */
-   @Ignore("bug")
    @Test
    public void testCasDeplaceDame() {
       System.out.println("casDeplaceDame");
