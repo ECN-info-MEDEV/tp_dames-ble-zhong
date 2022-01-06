@@ -117,16 +117,17 @@ public class Plateau {
             return new boolean[] { res, pris };
         } else {
             // faire déplacer un PION si possible
-            if (verifierDeplacerPion(x, y, x1, y1, joueur)) {
-                if ((Math.abs(x1 - x) == Math.abs(y1 - y) && Math.abs(x1 - x) == 2)
-                        && (grille[(x1 + x) / 2][(y1 + y) / 2] != null)) {
-                    if (grille[(x1 + x) / 2][(y1 + y) / 2].equipe != joueur) {
-                        // déplacement en prenant un pion si le pion à prendre est d'une autre équipe
-                        prendrePion(x, y, x1, y1);
-                        pris = true;
-                        System.out.println("un pion a été pris");
-                    }
-                }
+            if ((verifierDeplacerPion(x, y, x1, y1, joueur))
+                    && (Math.abs(x1 - x) == Math.abs(y1 - y))
+                    && (Math.abs(x1 - x) == 2)
+                    && (grille[(x1 + x) / 2][(y1 + y) / 2] != null)
+                    && (grille[(x1 + x) / 2][(y1 + y) / 2].equipe != joueur)) {
+
+                // déplacement en prenant un pion si le pion à prendre est d'une autre équipe
+                prendrePion(x, y, x1, y1);
+                pris = true;
+                System.out.println("un pion a été pris");
+
                 grille[x1][y1] = grille[x][y];
                 grille[x][y] = null;
                 System.out.println("Déplacement réussi.");
@@ -223,12 +224,17 @@ public class Plateau {
             }
         }
         switch (count) {
-            case 0 -> res = 1;
-            case 1 -> res = 2;
-            default -> {
+            case 0:
+                res = 1;
+                break;
+            case 1:
+                res = 2;
+                break;
+            default:
                 System.out.println("Cas de déplacement d'un dame inattendu.");
                 res = 0;
-            }
+                break;
+
         }
         return res;
     }

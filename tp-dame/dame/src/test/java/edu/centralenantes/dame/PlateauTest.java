@@ -16,14 +16,14 @@ import org.junit.Ignore;
  * @author uble
  */
 public class PlateauTest {
-   
+
    public PlateauTest() {
    }
-   
+
    @BeforeClass
    public static void setUpClass() {
    }
-   
+
    @AfterClass
    public static void tearDownClass() {
    }
@@ -31,7 +31,7 @@ public class PlateauTest {
    /**
     * Test of afficher method, of class Plateau.
     */
-   @Ignore
+   @Ignore("bug")
    @Test
    public void testAfficher() {
       System.out.println("afficher");
@@ -44,7 +44,7 @@ public class PlateauTest {
    /**
     * Test of getGrille method, of class Plateau.
     */
-   @Ignore
+   @Ignore("bug")
    @Test
    public void testGetGrille() {
       System.out.println("getGrille");
@@ -59,7 +59,7 @@ public class PlateauTest {
    /**
     * Test of setGrille method, of class Plateau.
     */
-   @Ignore
+   @Ignore("bug")
    @Test
    public void testSetGrille() {
       System.out.println("setGrille");
@@ -82,8 +82,8 @@ public class PlateauTest {
       int y1 = 4;
       Plateau instance = new Plateau();
       boolean[] result = instance.deplacer(x, y, x1, y1, true);
-      boolean[] expResult = new boolean[]{true, false};
-      
+      boolean[] expResult = new boolean[] { true, false };
+
       assertEquals(expResult[0], result[0]);
       assertEquals(expResult[1], result[1]);
       // TODO review the generated test code and remove the default call to fail.
@@ -146,5 +146,5 @@ public class PlateauTest {
       // TODO review the generated test code and remove the default call to fail.
       // fail("The test case is a prototype.");
    }
-   
+
 }
