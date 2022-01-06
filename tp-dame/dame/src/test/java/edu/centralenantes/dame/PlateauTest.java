@@ -77,12 +77,12 @@ public class PlateauTest {
    public void testDeplacer() {
       System.out.println("deplacer");
       int x = 0;
-      int y = 0;
+      int y = 3;
       int x1 = 1;
-      int y1 = 1;
+      int y1 = 4;
       Plateau instance = new Plateau();
-      boolean expResult = true;
-      boolean result = instance.deplacer(x, y, x1, y1);
+      boolean[] expResult = new boolean[]{true, false};
+      boolean[] result = instance.deplacer(x, y, x1, y1, true);
       assertEquals(expResult, result);
       // TODO review the generated test code and remove the default call to fail.
       fail("The test case is a prototype.");
@@ -101,7 +101,7 @@ public class PlateauTest {
       int y1 = 0;
       Plateau instance = new Plateau();
       boolean expResult = false;
-      boolean result = instance.verifierDeplacerPion(x, y, x1, y1);
+      boolean result = instance.verifierDeplacerPion(x, y, x1, y1, true);
       assertEquals(expResult, result);
       // TODO review the generated test code and remove the default call to fail.
       fail("The test case is a prototype.");
@@ -120,10 +120,10 @@ public class PlateauTest {
       int y1 = 0;
       Plateau instance = new Plateau();
       boolean expResult = false;
-      boolean result = instance.verifierDeplacerDame(x, y, x1, y1);
+      boolean result = instance.verifierDeplacerDame(x, y, x1, y1, true);
       assertEquals(expResult, result);
       // TODO review the generated test code and remove the default call to fail.
-      fail("The test case is a prototype.");
+      // fail("The test case is a prototype.");
    }
 
    /**
@@ -139,10 +139,10 @@ public class PlateauTest {
       int y1 = 0;
       Plateau instance = new Plateau();
       int expResult = 0;
-      int result = instance.casDeplaceDame(x, y, x1, y1);
+      int result = instance.casDeplaceDame(x, y, x1, y1, true);
       assertEquals(expResult, result);
       // TODO review the generated test code and remove the default call to fail.
-      fail("The test case is a prototype.");
+      // fail("The test case is a prototype.");
    }
    
 }

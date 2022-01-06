@@ -39,7 +39,9 @@ public class JouerTest {
    public void testTourDeJeu() {
       System.out.println("tourDeJeu");
       Plateau pla = null;
-      Jouer.tourDeJeu(pla);
+      
+      Jouer.tourDeJeu(pla, true);
+      Jouer.tourDeJeu(pla, false);
       // TODO review the generated test code and remove the default call to fail.
       fail("The test case is a prototype.");
    }
@@ -55,25 +57,25 @@ public class JouerTest {
       p.getGrille()[9][2] = new Element(true,false);
       p.getGrille()[9][3] = new Element(false,true);
       p.getGrille()[9][4] = new Element(true,true);
-      Jouer instance = new Jouer();
+
       //cas changement 9,1 donc pion blanc dans son camp
       boolean expResult = false;
-      boolean result = instance.Changement(p, 9, 1);
+      boolean result = Jouer.changement(p, 9, 1);
       assertEquals(expResult, result);
       
       //cas changement 9,2 donc pion noir dans le camp adverse
       expResult = true;
-      result = instance.Changement(p, 9, 2);
+      result = Jouer.changement(p, 9, 2);
       assertEquals(expResult, result);
       
       //cas changement 9,3 donc dame blanche dans son camp
       expResult = false;
-      result = instance.Changement(p, 9, 3);
+      result = Jouer.changement(p, 9, 3);
       assertEquals(expResult, result);
       
       //cas changement 9,4 donc dame noire dans le camp adverse
       expResult = false;
-      result = instance.Changement(p, 9, 4);
+      result = Jouer.changement(p, 9, 4);
       assertEquals(expResult, result);
       
    }

@@ -19,7 +19,7 @@ public class Plateau {
         for (int j = 0; j < 4; j++) {
             for (int i = 0; i < this.grille.length; i++) {
                 if ((i + j) % 2 == 1) {
-                    this.grille[i][j] = new Element(true, false);
+                    this.grille[i][j] = new Element(true, false);  // équipe des noirs
                 }
             }
         }
