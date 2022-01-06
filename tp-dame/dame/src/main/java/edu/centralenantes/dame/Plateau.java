@@ -91,8 +91,7 @@ public class Plateau {
                 grille[x1][y1] = grille[x][y];
                 grille[x][y] = null;
                 System.out.println("Déplacement réussi.");
-
-                // default valeur de res est déjà true;
+                // default valeur de res est déjà true, pas besoin de la changer
             } else {
                 System.out.println("On ne peut pas déplacer vers cette cellule selon les règles. Ré-essayez svp.");
                 res = false;
@@ -114,7 +113,7 @@ public class Plateau {
                 grille[x1][y1] = grille[x][y];
                 grille[x][y] = null;
                 System.out.println("Déplacement réussi.");
-                // default valeur de res est déjà true;
+                // default valeur de res est déjà true
             } else if (!verifierDeplacerPion(x, y, x1, y1, joueur)) {
                 System.out.println("On ne peut pas déplacer vers cette cellule selon les règles. Ré-essayez svp.");
                 res = false;
@@ -270,13 +269,15 @@ public class Plateau {
 
     public boolean partieFinie(boolean joueur) {
         boolean finie = true;
-        outerloop: for (int i = 0; i < 10; i++) {
+        boolean outerLoop = false;
+        for (int i = 0; i < 10; i++) {
+            if (outerLoop)
+                break;
             for (int j = 0; j < 10; j++) {
-                if (this.grille[i][j] != null) {
-                    if (this.grille[i][j].equipe == joueur) {
-                        finie = false;
-                        break outerloop; // sort des deux boucles puisqu'on a trouvé au moins un pion
-                    }
+                if ((this.grille[i][j] != null) && (this.grille[i][j].equipe == joueur)) {
+                    finie = false;
+                    outerLoop = true;
+                    break; // sort des deux boucles puisqu'on a trouvé au moins un pion
                 }
             }
         }
