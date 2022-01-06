@@ -62,6 +62,7 @@ public class PlateauTest {
       Element[][] grille = null;
       Plateau instance = new Plateau();
       instance.setGrille(grille);
+      assertEquals(grille, instance.getGrille());
    }
 
    /**
@@ -146,6 +147,35 @@ public class PlateauTest {
       int expResult = 1;
       int result = instance.casDeplaceDame(3, 4, 2, 5, true);
       assertEquals(expResult, result);
+   }
+
+   /**
+    * Test of renderSymbols method, of class Plateau.
+    */
+   @Ignore
+   @Test
+   public void testRenderSymbols() {
+      System.out.println("renderSymbols");
+      String[][] grid = null;
+      Plateau instance = new Plateau();
+      instance.renderSymbols(grid);
+
+   }
+
+   /**
+    * Test of partieFinie method, of class Plateau.
+    */
+   @Ignore
+   @Test
+   public void testPartieFinie() {
+      System.out.println("partieFinie");
+      boolean joueur = false;
+      Plateau instance = new Plateau();
+      boolean expResult = false;
+      boolean result = instance.partieFinie(joueur);
+      assertEquals(expResult, result);
+      // TODO review the generated test code and remove the default call to fail.
+      fail("The test case is a prototype.");
    }
 
 }
