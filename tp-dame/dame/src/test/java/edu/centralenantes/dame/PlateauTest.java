@@ -31,7 +31,6 @@ public class PlateauTest {
    /**
     * Test of afficher method, of class Plateau.
     */
-   @Ignore
    @Test
    public void testAfficher() {
       System.out.println("afficher");
@@ -44,14 +43,14 @@ public class PlateauTest {
    /**
     * Test of getGrille method, of class Plateau.
     */
-   @Ignore
+   
    @Test
    public void testGetGrille() {
       System.out.println("getGrille");
       Plateau instance = new Plateau();
-      Element[][] expResult = null;
+      Element expResult = null;
       Element[][] result = instance.getGrille();
-      assertArrayEquals(expResult, result);
+      assertEquals(expResult, result[0][0]);
       // TODO review the generated test code and remove the default call to fail.
       // fail("The test case is a prototype.");
    }
@@ -59,7 +58,7 @@ public class PlateauTest {
    /**
     * Test of setGrille method, of class Plateau.
     */
-   @Ignore
+   
    @Test
    public void testSetGrille() {
       System.out.println("setGrille");
