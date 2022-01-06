@@ -109,7 +109,7 @@ public class Plateau {
                 grille[x][y] = null;
                 System.out.println("Déplacement réussi.");
 
-                res = true;
+                // default valeur : res = true;
             } else {
                 System.out.println("On ne peut pas déplacer vers cette cellule selon les règles. Ré-essayez svp.");
                 res = false;
