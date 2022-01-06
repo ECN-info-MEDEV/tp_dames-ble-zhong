@@ -256,4 +256,20 @@ public class Plateau {
             }
         }
     }
+    
+    public boolean partieFinie(boolean joueur){
+        boolean finie = true;
+        outerloop:
+        for (int i = 0; i<10; i++){
+            for (int j = 0; j<10; j++){
+                if (this.grille[i][j] != null){
+                    if (this.grille[i][j].equipe == joueur){
+                        finie = false;
+                        break outerloop;  // sort des deux boucles puisqu'on a trouvé au moins un pion
+                    }
+                }
+            }
+        }
+        return finie;
+    }
 }
