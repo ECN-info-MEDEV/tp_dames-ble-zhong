@@ -16,12 +16,19 @@ public class Jouer {
     public static void main(String[] args) {
 
         Plateau plat = new Plateau();
-
+        boolean partieEnCours = true;
         System.out.println("Bienvenue au jeu de dames. Plateau crééé");
-
-        while (true) {
-            tourDeJeu(plat, true);
-            tourDeJeu(plat, false);
+        while (partieEnCours) {
+            tourDeJeu(plat, true);  // équipe des noirs
+            if (plat.partieFinie(false)){  // vérifie si les blancs n'ont plus de pion
+                System.out.println("Les noirs ont gagné.");
+                partieEnCours = false;
+            }  
+            tourDeJeu(plat, false);  // équipe des blancs
+            if (plat.partieFinie(true)){  // vérifie si les noirs n'ont plus de pion
+                System.out.println("Les blancs ont gagné.");
+                partieEnCours = false;
+            }
         }
     }
 
