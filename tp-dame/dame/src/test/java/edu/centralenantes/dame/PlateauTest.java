@@ -179,6 +179,19 @@ public class PlateauTest {
       boolean expResult = false;
       boolean result = instance.partieFinie(joueur);
       assertEquals(expResult, result);
+
+      Element[][] grilleSansEquipe1 = new Element[10][10];
+      for (int j = 0; j < 4; j++) {
+         for (int i = 0; i < grilleSansEquipe1.length; i++) {
+            if ((i + j) % 2 == 1) {
+               grilleSansEquipe1[i][j] = new Element(true, false); // équipe des noirs
+            }
+         }
+      }
+      instance.setGrille(grilleSansEquipe1);
+      joueur = true;
+      result = instance.partieFinie(joueur);
+      assertEquals(expResult, result);
    }
 
 }

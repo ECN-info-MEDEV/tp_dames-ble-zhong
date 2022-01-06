@@ -13,7 +13,7 @@ import org.junit.Ignore;
 
 /**
  *
- * @author uble
+ * @author uble, zijie
  */
 public class JouerTest {
 
