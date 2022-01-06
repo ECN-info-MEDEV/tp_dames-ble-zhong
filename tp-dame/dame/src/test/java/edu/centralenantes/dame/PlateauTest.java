@@ -31,11 +31,9 @@ public class PlateauTest {
    /**
     * Test of afficher method, of class Plateau.
     */
-<<<<<<< HEAD
-   
-=======
-   @Ignore("bug")
->>>>>>> c72e96f3edf6e1240ee345b85210cf31faa17fb6
+
+   @Ignore
+
    @Test
    public void testAfficher() {
       System.out.println("afficher");

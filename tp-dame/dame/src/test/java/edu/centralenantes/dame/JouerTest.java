@@ -17,7 +17,7 @@ import org.junit.Ignore;
  */
 public class JouerTest {
 
-<<<<<<< HEAD
+
    @BeforeClass
    public static void setUpClass() throws Exception {
    }
@@ -26,9 +26,6 @@ public class JouerTest {
    public static void tearDownClass() throws Exception {
    }
    
-   
-=======
->>>>>>> c72e96f3edf6e1240ee345b85210cf31faa17fb6
    /**
     * Test of main method, of class Jouer.
     */
