@@ -68,10 +68,10 @@ public class Plateau {
 
     /**
      *
-     * @param x      x initial
-     * @param y      y initial
-     * @param x1     x destinataire
-     * @param y1     y destinataire
+     * @param x x initial
+     * @param y y initial
+     * @param x1 x destinataire
+     * @param y1 y destinataire
      * @param joueur
      * @return
      */
@@ -82,7 +82,7 @@ public class Plateau {
         if (isDame) {
             // faire déplacer un DAME si possible
             if (verifierDeplacerDame(x, y, x1, y1, joueur)) {
-                if ((Math.abs(x1 - x) == Math.abs(y1 - y)) && (casDeplaceDame(x, y, x1, y1, joueur) == 2)) {
+                if ((Math.abs(x1 - x) == Math.abs(y1 - y)) && (casDeplaceDame(x, y, x1, joueur) == 2)) {
                     // déplacement en prenant un pion
                     prendrePion(x, y, x1, y1);
                     pris = true;
@@ -96,29 +96,25 @@ public class Plateau {
                 System.out.println("On ne peut pas déplacer vers cette cellule selon les règles. Ré-essayez svp.");
                 res = false;
             }
-            return new boolean[] { res, pris };
+            return new boolean[]{res, pris};
         } else {
             // faire déplacer un PION si possible
-            if ((verifierDeplacerPion(x, y, x1, y1, joueur))
-                    && (Math.abs(x1 - x) == Math.abs(y1 - y))
-                    && (Math.abs(x1 - x) == 2)
-                    && (grille[(x1 + x) / 2][(y1 + y) / 2] != null)
-                    && (grille[(x1 + x) / 2][(y1 + y) / 2].equipe != joueur)) {
-
-                // déplacement en prenant un pion si le pion à prendre est d'une autre équipe
-                prendrePion(x, y, x1, y1);
-                pris = true;
-                System.out.println("un pion a été pris");
-
+            if (verifierDeplacerPion(x, y, x1, y1, joueur)) {
+                if ((Math.abs(x1 - x) == Math.abs(y1 - y) && Math.abs(x1 - x) == 2) && (grille[(x1 + x) / 2][(y1 + y) / 2] != null) && (grille[(x1 + x) / 2][(y1 + y) / 2].equipe != joueur)) {
+                    // déplacement en prenant un pion si le pion à prendre est d'une autre équipe
+                    prendrePion(x, y, x1, y1);
+                    pris = true;
+                    System.out.println("un pion a été pris");
+                }
                 grille[x1][y1] = grille[x][y];
                 grille[x][y] = null;
                 System.out.println("Déplacement réussi.");
-                // default valeur de res est déjà true
-            } else if (!verifierDeplacerPion(x, y, x1, y1, joueur)) {
+                res = true;
+            } else {
                 System.out.println("On ne peut pas déplacer vers cette cellule selon les règles. Ré-essayez svp.");
                 res = false;
             }
-            return new boolean[] { res, pris };
+            return new boolean[]{res, pris};
         }
     }
 
@@ -173,10 +169,13 @@ public class Plateau {
             res = false;
         } else if (Math.abs(x1 - x) == Math.abs(y1 - y)) {
             // déplacement dans une ligne
-            res = switch (casDeplaceDame(x, y, x1, y1, joueur)) {
-                case 1 -> true; // déplacer sans prendre un pion
-                case 2 -> true; // déplacer en prenant un pion
-                default -> false;
+            res = switch (casDeplaceDame(x, y, x1, joueur)) {
+                case 1 ->
+                    true; // déplacer sans prendre un pion
+                case 2 ->
+                    true; // déplacer en prenant un pion
+                default ->
+                    false;
             };
         } else {
             System.out.println("Destination non prise en compte. Ré-essayer svp.");
@@ -185,7 +184,7 @@ public class Plateau {
         return res;
     }
 
-    public int casDeplaceDame(int x, int y, int x1, int y1, boolean joueur) {
+    public int casDeplaceDame(int x, int y, int x1, boolean joueur) {
         int res;
         /**
          * x : x initial y : y initial x1 : x destinataire y1: y destinataire
@@ -271,8 +270,9 @@ public class Plateau {
         boolean finie = true;
         boolean outerLoop = false;
         for (int i = 0; i < 10; i++) {
-            if (outerLoop)
+            if (outerLoop) {
                 break;
+            }
             for (int j = 0; j < 10; j++) {
                 if ((this.grille[i][j] != null) && (this.grille[i][j].equipe == joueur)) {
                     finie = false;

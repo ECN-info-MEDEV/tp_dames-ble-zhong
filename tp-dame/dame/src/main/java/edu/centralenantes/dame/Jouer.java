@@ -52,7 +52,7 @@ public class Jouer {
         int y1;
         boolean priseObligee = false;
 
-        while (true) {
+        while (!reussi[0]) {
             if (!priseObligee) {
                 System.out.println("Coordonnées du pion à déplacer? ");
                 while (true) {
@@ -93,7 +93,7 @@ public class Jouer {
             } else {
                 String strOutput = "Prise impossible";
                 if (pla.getGrille()[x][y].isDame()) {
-                    if (pla.casDeplaceDame(x, y, x1, y1, joueur) != 2) {
+                    if (pla.casDeplaceDame(x, y, x1, joueur) != 2) {
                         System.out.println(strOutput);
                     } else {
                         reussi = pla.deplacer(x, y, x1, y1, joueur);
@@ -113,6 +113,7 @@ public class Jouer {
             }
 
             if (reussi[0]) {
+                pla.afficher();
                 changement(pla, x1, y1); // vérifier si le pion est transformé en dame
             }
 
@@ -125,22 +126,14 @@ public class Jouer {
                     reponse = keyboard.nextLine();
                 } while (!reponse.equals("y") && !reponse.equals("n"));
 
-                if ("n".equals(reponse)) {
-                    break;
-                } else {
+                if ("y".equals(reponse)) {
                     if (reussi[0]) { // on change les coordonnées initiales s'il y a eu un déplacement
                         x = x1;
                         y = y1;
                     }
                     priseObligee = true;
                     reussi[0] = false;
-                    continue;
                 }
-            }
-
-            if (reussi[0]) { // sort de la boucle si on ne veut plus prendre de pion ou si on voulait juste
-                             // se déplacer
-                break;
             }
         }
     }

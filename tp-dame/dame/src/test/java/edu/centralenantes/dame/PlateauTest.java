@@ -129,10 +129,9 @@ public class PlateauTest {
       int x = 1;
       int y = 0;
       int x1 = 3;
-      int y1 = 2;
       Plateau instance = new Plateau();
       int expResult = 1;
-      int result = instance.casDeplaceDame(x, y, x1, y1, true);
+      int result = instance.casDeplaceDame(x, y, x1, true);
       assertEquals(expResult, result);
    }
 
@@ -150,7 +149,7 @@ public class PlateauTest {
       instance.deplacer(x, y, 3, 4, true);
       instance.deplacer(x1, y1, 2, 5, false);
       int expResult = 1;
-      int result = instance.casDeplaceDame(3, 4, 2, 5, true);
+      int result = instance.casDeplaceDame(3, 4, 2, true);
       assertEquals(expResult, result);
    }
 
