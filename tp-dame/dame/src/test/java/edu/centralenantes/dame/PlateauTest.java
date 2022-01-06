@@ -93,7 +93,6 @@ public class PlateauTest {
    /**
     * Test of verifierDeplacerPion method, of class Plateau.
     */
-   @Ignore
    @Test
    public void testVerifierDeplacerPion() {
       System.out.println("verifierDeplacerPion");
@@ -112,14 +111,13 @@ public class PlateauTest {
    /**
     * Test of verifierDeplacerDame method, of class Plateau.
     */
-   @Ignore
    @Test
    public void testVerifierDeplacerDame() {
       System.out.println("verifierDeplacerDame");
-      int x = 0;
+      int x = 1;
       int y = 0;
-      int x1 = 0;
-      int y1 = 0;
+      int x1 = 5;
+      int y1 = 4;
       Plateau instance = new Plateau();
       boolean expResult = false;
       boolean result = instance.verifierDeplacerDame(x, y, x1, y1, true);
@@ -131,17 +129,36 @@ public class PlateauTest {
    /**
     * Test of casDeplaceDame method, of class Plateau.
     */
-   @Ignore
    @Test
    public void testCasDeplaceDame() {
       System.out.println("casDeplaceDame");
-      int x = 0;
+      int x = 1;
       int y = 0;
-      int x1 = 0;
-      int y1 = 0;
+      int x1 = 3;
+      int y1 = 2;
       Plateau instance = new Plateau();
-      int expResult = 0;
+      int expResult = 1;
       int result = instance.casDeplaceDame(x, y, x1, y1, true);
+      assertEquals(expResult, result);
+      // TODO review the generated test code and remove the default call to fail.
+      // fail("The test case is a prototype.");
+   }
+   
+   /**
+    * Test of casDeplaceDame method, of class Plateau.
+    */
+   @Test
+   public void testPrendrePion() {
+      System.out.println("prendrePion");
+      int x = 4;
+      int y = 3;
+      int x1 = 1;
+      int y1 = 6;
+      Plateau instance = new Plateau();
+      instance.deplacer(x,y,3,4,true);
+      instance.deplacer(x1,y1,2,5,false);
+      int expResult = 1;
+      int result = instance.casDeplaceDame(3, 4, 2, 5, true);
       assertEquals(expResult, result);
       // TODO review the generated test code and remove the default call to fail.
       // fail("The test case is a prototype.");
