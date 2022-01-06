@@ -37,8 +37,6 @@ public class PlateauTest {
       System.out.println("afficher");
       Plateau instance = new Plateau();
       instance.afficher();
-      // TODO review the generated test code and remove the default call to fail.
-      // fail("The test case is a prototype.");
    }
 
    /**
@@ -64,8 +62,6 @@ public class PlateauTest {
       Element[][] grille = null;
       Plateau instance = new Plateau();
       instance.setGrille(grille);
-      // TODO review the generated test code and remove the default call to fail.
-      // fail("The test case is a prototype.");
    }
 
    /**
@@ -84,8 +80,6 @@ public class PlateauTest {
 
       assertEquals(expResult[0], result[0]);
       assertEquals(expResult[1], result[1]);
-      // TODO review the generated test code and remove the default call to fail.
-      // fail("The test case is a prototype.");
    }
 
    /**
@@ -102,8 +96,6 @@ public class PlateauTest {
       boolean expResult = false;
       boolean result = instance.verifierDeplacerPion(x, y, x1, y1, true);
       assertEquals(expResult, result);
-      // TODO review the generated test code and remove the default call to fail.
-      // fail("The test case is a prototype.");
    }
 
    /**
@@ -120,8 +112,6 @@ public class PlateauTest {
       boolean expResult = false;
       boolean result = instance.verifierDeplacerDame(x, y, x1, y1, true);
       assertEquals(expResult, result);
-      // TODO review the generated test code and remove the default call to fail.
-      // fail("The test case is a prototype.");
    }
 
    /**
@@ -138,8 +128,6 @@ public class PlateauTest {
       int expResult = 1;
       int result = instance.casDeplaceDame(x, y, x1, y1, true);
       assertEquals(expResult, result);
-      // TODO review the generated test code and remove the default call to fail.
-      // fail("The test case is a prototype.");
    }
 
    /**
@@ -158,8 +146,6 @@ public class PlateauTest {
       int expResult = 1;
       int result = instance.casDeplaceDame(3, 4, 2, 5, true);
       assertEquals(expResult, result);
-      // TODO review the generated test code and remove the default call to fail.
-      // fail("The test case is a prototype.");
    }
 
 }
