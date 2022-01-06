@@ -47,25 +47,8 @@ public class Plateau {
             grid[i][1] = "   ";
         }
 
-        for (int i = 2; i < grille.length + 2; i++) {
-            for (int j = 2; j < grille[0].length + 2; j++) {
-                if (grille[i - 2][j - 2] != null && grille[i - 2][j - 2].isEquipe() && grille[i - 2][j - 2].isDame()) {
-                    grid[i][j] = " N ";
-                } else if (grille[i - 2][j - 2] != null && grille[i - 2][j - 2].isEquipe()
-                        && !(grille[i - 2][j - 2].isDame())) {
-                    grid[i][j] = " n ";
-                } else if (grille[i - 2][j - 2] != null && !(grille[i - 2][j - 2].isEquipe())
-                        && !(grille[i - 2][j - 2].isDame())) {
-                    grid[i][j] = " b ";
-                } else if (grille[i - 2][j - 2] != null && !(grille[i - 2][j - 2].isEquipe())
-                        && (grille[i - 2][j - 2].isDame())) {
-                    grid[i][j] = " B ";
-                } else {
-                    grid[i][j] = " - ";
-                }
+        renderSymbols(grid);
 
-            }
-        }
         for (String[] grid1 : grid) {
             for (String st : grid1) {
                 System.out.print(st);
@@ -259,6 +242,28 @@ public class Plateau {
         for (int i = 1; i < dist; i++) {
             if (grille[x + i * xmulti][y + i * ymulti] != null) {
                 grille[x + i * xmulti][y + i * ymulti] = null;
+            }
+        }
+    }
+
+    public void renderSymbols(String[][] grid) {
+        for (int i = 2; i < grille.length + 2; i++) {
+            for (int j = 2; j < grille[0].length + 2; j++) {
+                if (grille[i - 2][j - 2] != null && grille[i - 2][j - 2].isEquipe() && grille[i - 2][j - 2].isDame()) {
+                    grid[i][j] = " N ";
+                } else if (grille[i - 2][j - 2] != null && grille[i - 2][j - 2].isEquipe()
+                        && !(grille[i - 2][j - 2].isDame())) {
+                    grid[i][j] = " n ";
+                } else if (grille[i - 2][j - 2] != null && !(grille[i - 2][j - 2].isEquipe())
+                        && !(grille[i - 2][j - 2].isDame())) {
+                    grid[i][j] = " b ";
+                } else if (grille[i - 2][j - 2] != null && !(grille[i - 2][j - 2].isEquipe())
+                        && (grille[i - 2][j - 2].isDame())) {
+                    grid[i][j] = " B ";
+                } else {
+                    grid[i][j] = " - ";
+                }
+
             }
         }
     }
