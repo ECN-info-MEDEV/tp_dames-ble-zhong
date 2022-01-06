@@ -152,20 +152,20 @@ public class PlateauTest {
    /**
     * Test of renderSymbols method, of class Plateau.
     */
-   @Ignore
+
    @Test
    public void testRenderSymbols() {
       System.out.println("renderSymbols");
-      String[][] grid = null;
       Plateau instance = new Plateau();
+      String[][] grid = new String[instance.getGrille().length + 2][instance.getGrille()[0].length + 2];
       instance.renderSymbols(grid);
+      assertEquals(" - ", grid[2][2]);
 
    }
 
    /**
     * Test of partieFinie method, of class Plateau.
     */
-   @Ignore
    @Test
    public void testPartieFinie() {
       System.out.println("partieFinie");
@@ -174,8 +174,6 @@ public class PlateauTest {
       boolean expResult = false;
       boolean result = instance.partieFinie(joueur);
       assertEquals(expResult, result);
-      // TODO review the generated test code and remove the default call to fail.
-      fail("The test case is a prototype.");
    }
 
 }
