@@ -27,20 +27,20 @@ public class Jouer {
 
     /**
      *
-     * @param pla plateau de jeu
+     * @param pla    plateau de jeu
      * @param joueur
      */
     public static void tourDeJeu(Plateau pla, boolean joueur) {
         Scanner keyboard = new Scanner(System.in);
-        if (joueur) {  // true = noirs
+        if (joueur) { // true = noirs
             System.out.println("Tour du Joueur 1. Equipe noirs");
         } else {
             System.out.println("Tour du Joueur 2. Equipe blancs");
         }
         pla.afficher();
-        boolean[] reussi = new boolean[]{false, false};
-        int x=0;
-        int y=0;
+        boolean[] reussi = new boolean[] { false, false };
+        int x = 0;
+        int y = 0;
         int x1;
         int y1;
         boolean priseObligee = false;
@@ -55,10 +55,10 @@ public class Jouer {
                     System.out.println("y ?");
                     y = keyboard.nextInt();
 
-                    if (x<=9 && x>=0 && y<=9 && y>=0){
+                    if (x <= 9 && x >= 0 && y <= 9 && y >= 0) {
                         if (pla.getGrille()[x][y] != null) {
-                            if (pla.getGrille()[x][y].isEquipe() == joueur) {  // equipe==true --> équipe des noirs
-                                break;  // sort de la boucle si les valeurs sont bonnes
+                            if (pla.getGrille()[x][y].isEquipe() == joueur) { // equipe==true --> équipe des noirs
+                                break; // sort de la boucle si les valeurs sont bonnes
                             }
                         }
                     }
@@ -74,46 +74,42 @@ public class Jouer {
                 y1 = keyboard.nextInt();
                 System.out.println("x " + x + "y " + y);
                 System.out.println("x1 " + x1 + "y1 " + y1);
-                if (x1 <= 9 && x1 >= 0 && y1 <= 9 && y1 >= 0){
-                    if ((pla.getGrille()[x1][y1] == null) && (x1 != x || y1 != y)){
-                        break;  // sort de la boucle si les valeurs sont bonnes
+                if (x1 <= 9 && x1 >= 0 && y1 <= 9 && y1 >= 0) {
+                    if ((pla.getGrille()[x1][y1] == null) && (x1 != x || y1 != y)) {
+                        break; // sort de la boucle si les valeurs sont bonnes
                     }
                 }
-                
+
             }
 
-            if (!priseObligee){
+            if (!priseObligee) {
                 reussi = pla.deplacer(x, y, x1, y1, joueur);
-            }
-            else{
-                if (pla.getGrille()[x][y].isDame()){
-                    if (pla.casDeplaceDame(x, y, x1, y1, joueur) != 2){
+            } else {
+                if (pla.getGrille()[x][y].isDame()) {
+                    if (pla.casDeplaceDame(x, y, x1, y1, joueur) != 2) {
                         System.out.println("Prise impossible");
-                    }
-                    else{
+                    } else {
                         reussi = pla.deplacer(x, y, x1, y1, joueur);
                     }
-                }
-                else{
-                    if ((Math.abs(x1 - x) == Math.abs(y1 - y) && Math.abs(x1 - x) == 2) && (pla.getGrille()[(x1 + x) / 2][(y1 + y) / 2] != null)){
+                } else {
+                    if ((Math.abs(x1 - x) == Math.abs(y1 - y) && Math.abs(x1 - x) == 2)
+                            && (pla.getGrille()[(x1 + x) / 2][(y1 + y) / 2] != null)) {
                         if (pla.getGrille()[(x1 + x) / 2][(y1 + y) / 2].equipe != joueur) {
                             reussi = pla.deplacer(x, y, x1, y1, joueur);
-                        }
-                        else{
+                        } else {
                             System.out.println("Prise impossible");
                         }
-                    }
-                    else{
+                    } else {
                         System.out.println("Prise impossible");
                     }
                 }
             }
-            
-            if (reussi[0]){
-                changement(pla, x1, y1);  // vérifier si le pion est transformé en dame
+
+            if (reussi[0]) {
+                changement(pla, x1, y1); // vérifier si le pion est transformé en dame
             }
 
-            if (reussi[1]) {  // un pion a été pris, on refait un tour de jeu si besoin
+            if (reussi[1]) { // un pion a été pris, on refait un tour de jeu si besoin
                 pla.afficher();
 
                 System.out.println("Réessayer de prendre un pion? [y/n]");
@@ -125,17 +121,18 @@ public class Jouer {
                 if ("n".equals(reponse)) {
                     break;
                 } else {
-                    if (reussi[0]){  // on change les coordonnées initiales s'il y a eu un déplacement
+                    if (reussi[0]) { // on change les coordonnées initiales s'il y a eu un déplacement
                         x = x1;
                         y = y1;
                     }
-                    priseObligee=true;
-                    reussi[0]=false;
+                    priseObligee = true;
+                    reussi[0] = false;
                     continue;
                 }
             }
 
-            if (reussi[0]) {  // sort de la boucle si on ne veut plus prendre de pion ou si on voulait juste se déplacer
+            if (reussi[0]) { // sort de la boucle si on ne veut plus prendre de pion ou si on voulait juste
+                             // se déplacer
                 break;
             }
         }
