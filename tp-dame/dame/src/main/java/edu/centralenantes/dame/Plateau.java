@@ -109,7 +109,7 @@ public class Plateau {
                 grille[x][y] = null;
                 System.out.println("Déplacement réussi.");
 
-                // default valeur : res = true;
+                // default valeur de res est déjà true;
             } else {
                 System.out.println("On ne peut pas déplacer vers cette cellule selon les règles. Ré-essayez svp.");
                 res = false;
@@ -131,7 +131,7 @@ public class Plateau {
                 grille[x1][y1] = grille[x][y];
                 grille[x][y] = null;
                 System.out.println("Déplacement réussi.");
-                res = true;
+                // default valeur de res est déjà true;
             } else if (!verifierDeplacerPion(x, y, x1, y1, joueur)) {
                 System.out.println("On ne peut pas déplacer vers cette cellule selon les règles. Ré-essayez svp.");
                 res = false;
