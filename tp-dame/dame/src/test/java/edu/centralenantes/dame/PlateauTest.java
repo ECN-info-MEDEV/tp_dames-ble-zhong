@@ -82,7 +82,7 @@ public class PlateauTest {
       assertEquals(expResult[0], result[0]);
       assertEquals(expResult[1], result[1]);
       instance.getGrille()[2][3].setDame(true);
-      boolean[] result2 = instance.deplacer(2,3,0,5,true);
+      boolean[] result2 = instance.deplacer(2, 3, 0, 5, true);
       boolean[] expResult2 = new boolean[] { true, false };
       assertEquals(expResult2[0], result2[0]);
       assertEquals(expResult2[1], result2[1]);
@@ -187,9 +187,16 @@ public class PlateauTest {
             }
          }
       }
+      grilleSansEquipe1[0][0] = new Element(true, false);
+
       instance.setGrille(grilleSansEquipe1);
       joueur = true;
       result = instance.partieFinie(joueur);
+      assertEquals(expResult, result);
+
+      joueur = false;
+      result = instance.partieFinie(joueur);
+      expResult = true;
       assertEquals(expResult, result);
    }
 
