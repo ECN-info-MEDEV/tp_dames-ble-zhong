@@ -152,7 +152,7 @@ public class PlateauTest {
    /**
     * Test of renderSymbols method, of class Plateau.
     */
-   @Ignore
+   @Ignore("pas encore implémenté")
    @Test
    public void testRenderSymbols() {
       System.out.println("renderSymbols");
@@ -165,7 +165,7 @@ public class PlateauTest {
    /**
     * Test of partieFinie method, of class Plateau.
     */
-   @Ignore
+   @Ignore("pas encore implémenté")
    @Test
    public void testPartieFinie() {
       System.out.println("partieFinie");
