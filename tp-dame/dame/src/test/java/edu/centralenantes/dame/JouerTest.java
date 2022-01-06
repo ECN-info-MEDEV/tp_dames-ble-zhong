@@ -17,7 +17,6 @@ import org.junit.Ignore;
  */
 public class JouerTest {
 
-
    @BeforeClass
    public static void setUpClass() throws Exception {
    }
@@ -25,11 +24,11 @@ public class JouerTest {
    @AfterClass
    public static void tearDownClass() throws Exception {
    }
-   
+
    /**
     * Test of main method, of class Jouer.
     */
-   @Ignore
+   @Ignore("pas encore implémenté")
    @Test
    public void testMain() {
       System.out.println("main");
@@ -42,12 +41,11 @@ public class JouerTest {
    /**
     * Test of tourDeJeu method, of class Jouer.
     */
-   @Ignore
+   @Ignore("pas encore implémenté")
    @Test
    public void testTourDeJeu() {
       System.out.println("tourDeJeu");
       Plateau pla = new Plateau();
-      
 
       Jouer.tourDeJeu(pla, true);
       Jouer.tourDeJeu(pla, false);
