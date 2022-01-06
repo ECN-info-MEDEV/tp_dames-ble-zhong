@@ -55,12 +55,12 @@ public class Jouer {
                     System.out.println("y ?");
                     y = keyboard.nextInt();
 
-                    if (x <= 9 && x >= 0 && y <= 9 && y >= 0) {
-                        if (pla.getGrille()[x][y] != null) {
-                            if (pla.getGrille()[x][y].isEquipe() == joueur) { // equipe==true --> équipe des noirs
-                                break; // sort de la boucle si les valeurs sont bonnes
-                            }
-                        }
+                    if ((x <= 9 && x >= 0 && y <= 9 && y >= 0)
+                            && (pla.getGrille()[x][y] != null)
+                            && (pla.getGrille()[x][y].isEquipe() == joueur)) {
+                        // equipe==true --> équipe des noirs
+                        // sort de la boucle si les valeurs sont bonnes
+                        break;
                     }
                 }
             }
@@ -72,12 +72,11 @@ public class Jouer {
 
                 System.out.println("y1 ?");
                 y1 = keyboard.nextInt();
-                System.out.println("x " + x + "y " + y);
-                System.out.println("x1 " + x1 + "y1 " + y1);
-                if (x1 <= 9 && x1 >= 0 && y1 <= 9 && y1 >= 0) {
-                    if ((pla.getGrille()[x1][y1] == null) && (x1 != x || y1 != y)) {
-                        break; // sort de la boucle si les valeurs sont bonnes
-                    }
+                System.out.println("x : " + x + "y : " + y);
+                System.out.println("x1 : " + x1 + "y1 : " + y1);
+                if ((x1 <= 9 && x1 >= 0 && y1 <= 9 && y1 >= 0)
+                        && ((pla.getGrille()[x1][y1] == null) && (x1 != x || y1 != y))) {
+                    break; // sort de la boucle si les valeurs sont bonnes
                 }
 
             }
@@ -140,14 +139,10 @@ public class Jouer {
 
     public static boolean changement(Plateau p, int x, int y) {
         boolean etat = false;
-        if (!(p.getGrille()[x][y].isDame())) {
-            if (p.getGrille()[x][y].isEquipe() && x == 9) {
-                p.getGrille()[x][y].setDame(true);
-                etat = true;
-            } else if (!(p.getGrille()[x][y].isEquipe()) && x == 0) {
-                p.getGrille()[x][y].setDame(true);
-                etat = true;
-            }
+        if ((!(p.getGrille()[x][y].isDame()))
+                && ((p.getGrille()[x][y].isEquipe() && x == 9) || (!(p.getGrille()[x][y].isEquipe()) && x == 0))) {
+            p.getGrille()[x][y].setDame(true);
+            etat = true;
         }
         return (etat);
     }
